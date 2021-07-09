@@ -16,7 +16,7 @@ dotenv.config();
 const port = process.env.PORT || 8002; 
 
 // Serve static files from the React app
-// app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 mongoose.connect(
   process.env.MONGO_URL,
@@ -56,24 +56,9 @@ app.use("/api/posts", postRoute);
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname+'/client/build/index.html'));
-// });
-
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
-}
-
-else {
-  app.use(express.static(path.join(__dirname, '/client/public')));
-  app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./client/public/index.html"));
-  });
-}
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`running on port ${port}`);
