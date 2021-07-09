@@ -14,7 +14,7 @@ import { AuthContext } from "./context/AuthContext";
 function App() {
   const { user } = useContext(AuthContext);
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router >
       <Switch>
         <Route exact path="/">
           {user ? <Home /> : <Register />}
