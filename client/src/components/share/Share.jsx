@@ -9,6 +9,7 @@ import {
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import { app } from '../../axios'; 
 
 export default function Share() {
   const { user } = useContext(AuthContext);
@@ -30,11 +31,11 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("/upload", data);
+        await app.post("/upload", data);
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
+      await app.post("/posts", newPost);
       window.location.reload();
     } catch (err) {}
   };
