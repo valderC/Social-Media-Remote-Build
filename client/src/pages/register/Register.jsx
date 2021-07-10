@@ -35,7 +35,7 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">ValderSocial</h3>
           <span className="loginDesc">
             Connect with friends and the world around you on ValderSocial.
           </span>
